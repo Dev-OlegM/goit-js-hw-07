@@ -1,11 +1,15 @@
 "use·strict";
 
-const inputRef = document.querySelector("#validation-input");
+const validationInput = document.querySelector("#validation-input");
 
-inputRef.addEventListener("blur", onInputBlur);
-
-function onInputBlur(event) {
-  event.target.value.length !== Number(inputRef.getAttribute("data-length"))
-    ? inputRef.classList.add("invalid")
-    : inputRef.classList.replace("invalid", "valid");
+function validationInputBlur() {
+  if (validationInput.value.length === 6) {
+    validationInput.classList.add("valid");
+    validationInput.classList.remove("invalid");
+  } else {
+    validationInput.classList.add("invalid");
+    validationInput.classList.remove("valid");
+  }
 }
+
+validationInput.addEventListener("blur", validationInputBlur);
